@@ -1,0 +1,76 @@
+[
+  { "model": "main.cv", "pk": 1, "fields": {
+    "first_name": "Alice", "last_name": "Anderson",
+    "bio": "Full-stack developer with a passion for building scalable web apps."
+  }},
+  { "model": "main.cv", "pk": 2, "fields": {
+    "first_name": "Bob", "last_name": "Brown",
+    "bio": "Backend engineer focused on APIs and system design."
+  }},
+  { "model": "main.cv", "pk": 3, "fields": {
+    "first_name": "Charlie", "last_name": "Clark",
+    "bio": "Frontend specialist and UI/UX enthusiast."
+  }},
+
+  { "model": "main.skill", "fields": { "cv": 1, "name": "Python", "level": "advanced" }},
+  { "model": "main.skill", "fields": { "cv": 1, "name": "Django", "level": "intermediate" }},
+  { "model": "main.skill", "fields": { "cv": 1, "name": "JavaScript", "level": "intermediate" }},
+  { "model": "main.skill", "fields": { "cv": 1, "name": "Docker", "level": "basic" }},
+  { "model": "main.skill", "fields": { "cv": 1, "name": "PostgreSQL", "level": "advanced" }},
+
+  { "model": "main.skill", "fields": { "cv": 2, "name": "Python", "level": "intermediate" }},
+  { "model": "main.skill", "fields": { "cv": 2, "name": "Django", "level": "basic" }},
+  { "model": "main.skill", "fields": { "cv": 2, "name": "FastAPI", "level": "advanced" }},
+  { "model": "main.skill", "fields": { "cv": 2, "name": "Redis", "level": "intermediate" }},
+  { "model": "main.skill", "fields": { "cv": 2, "name": "Celery", "level": "advanced" }},
+
+  { "model": "main.skill", "fields": { "cv": 3, "name": "Python", "level": "basic" }},
+  { "model": "main.skill", "fields": { "cv": 3, "name": "Django", "level": "advanced" }},
+  { "model": "main.skill", "fields": { "cv": 3, "name": "React", "level": "advanced" }},
+  { "model": "main.skill", "fields": { "cv": 3, "name": "Tailwind CSS", "level": "intermediate" }},
+  { "model": "main.skill", "fields": { "cv": 3, "name": "Figma", "level": "intermediate" }},
+
+  { "model": "main.project", "fields": {
+    "cv": 1, "name": "E-Commerce Platform",
+    "description": "A Django-based shop with cart and payment integrations."
+  }},
+  { "model": "main.project", "fields": {
+    "cv": 1, "name": "Chat App",
+    "description": "Real-time chat app using Django Channels and WebSockets."
+  }},
+  { "model": "main.project", "fields": {
+    "cv": 2, "name": "API Gateway",
+    "description": "Designed a RESTful API gateway for microservices architecture."
+  }},
+  { "model": "main.project", "fields": {
+    "cv": 2, "name": "Monitoring Dashboard",
+    "description": "Built a real-time system monitor with async views and charts."
+  }},
+  { "model": "main.project", "fields": {
+    "cv": 3, "name": "Portfolio Website",
+    "description": "Built a sleek personal site using React and Tailwind CSS."
+  }},
+  { "model": "main.project", "fields": {
+    "cv": 3, "name": "Design System",
+    "description": "Created a custom UI kit and component library for rapid prototyping."
+  }},
+
+  { "model": "main.contact", "fields": {
+    "cv": 1, "type": "email", "value": "alice@example.com"
+  }},
+  { "model": "main.contact", "fields": {
+    "cv": 1, "type": "linkedin", "value": "https://linkedin.com/in/aliceanderson"
+  }},
+  { "model": "main.contact", "fields": {
+    "cv": 2, "type": "phone", "value": "+123456789"
+  }},
+  { "model": "main.contact", "fields": {
+    "cv": 2, "type": "github", "value": "https://github.com/bobbrown"
+  }},
+  { "model": "main.contact", "fields": {
+    "cv": 3, "type": "telegram", "value": "@charliec"
+  }},
+  { "model": "main.contact", "fields": {
+    "cv": 3, "type": "website", "value": "https://charlieclark.dev"
+  }}
+]
