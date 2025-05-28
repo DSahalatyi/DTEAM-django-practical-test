@@ -21,3 +21,15 @@ practical-test`.
 the exact Python version.
 2. Use **Poetry** to manage and store project dependencies. This will create a `pyproject.toml` file.
 3. Update your `README.md` with clear instructions on how to set up and use pyenv and Poetry for this project.
+
+
+### Installation
+**Install python using pyenv** ([Linux/MacOS](https://github.com/pyenv/pyenv)|[Windows](https://github.com/pyenv-win/pyenv-win))
+```bash
+pyenv install 3.12.8
+pyenv local 3.12.8
+```
+**Install dependencies with [poetry](https://python-poetry.org/docs/)**
+```bash
+poetry install --no-root
+```
