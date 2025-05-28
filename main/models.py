@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class LevelChoices(models.TextChoices):
@@ -20,6 +21,9 @@ class CV(models.Model):
     first_name = models.CharField(max_length=63)
     last_name = models.CharField(max_length=63)
     bio = models.TextField()
+
+    def get_absolute_url(self):
+        return reverse("main:cv-detail", kwargs={"pk": self.pk})
 
 
 class Skill(models.Model):

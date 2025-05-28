@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from django.views import generic
 
-# Create your views here.
+from main.models import CV
+
+
+class CVListView(generic.ListView):
+    model = CV
+    queryset = CV.objects.prefetch_related("skills", "projects", "contacts")
+
+
+class CVDetailView(generic.DetailView):
+    model = CV
+    queryset = CV.objects.prefetch_related("skills", "projects", "contacts")

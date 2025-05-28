@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}{{ cv.first_name }} {{ cv.last_name }} - CV{% endblock %}
+{% block content %}
+  <h2>{{ cv.first_name }} {{ cv.last_name }}</h2>
+  <h4>{{ cv.bio }}</h4>
+  <br>
+  <div class="contacts-block">
+    {% for contact in cv.contacts.all %}
+      <strong>{{ contact.get_type_display }}</strong> : {{ contact.value }} {% if not forloop.last %}|
+    {% endif %}
+    {% endfor %}
+  </div>
+  <h4>Skills</h4>
+  <ul class="list-group">
+    {% for skill in cv.skills.all %}
+      <li class="list-group-item">
+        <strong>{{ skill.name }}</strong><span class="gray-text"> {{ skill.get_level_display }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+  <h4 class="projects-heading">Projects</h4>
+  <ul class="list-group">
+    {% for project in cv.projects.all %}
+      <li class="list-group-item project-description">
+        <strong>{{ project.name }}</strong>
+        <p>{{ project.description }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

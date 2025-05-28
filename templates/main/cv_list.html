@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if cv_list %}
+    <h1>CV List</h1>
+    <ul class="list-group">
+      {% for cv in cv_list %}
+        <a class="cv-link" href="{{ cv.get_absolute_url }}">
+          <li class="list-group-item">
+            <h2>{{ cv.first_name }} {{ cv.last_name }}</h2>
+          </li>
+        </a>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no CVs</p>
+  {% endif %}
+{% endblock %}
