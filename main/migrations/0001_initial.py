@@ -5,47 +5,121 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='CV',
+            name="CV",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=63)),
-                ('last_name', models.CharField(max_length=63)),
-                ('bio', models.TextField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("first_name", models.CharField(max_length=63)),
+                ("last_name", models.CharField(max_length=63)),
+                ("bio", models.TextField()),
             ],
         ),
         migrations.CreateModel(
-            name='Contact',
+            name="Contact",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('type', models.CharField(choices=[('phone', 'Phone number'), ('email', 'Email address'), ('telegram', 'Telegram'), ('linkedin', 'LinkedIn'), ('github', 'Github'), ('website', 'Website')], max_length=63)),
-                ('value', models.CharField(max_length=127)),
-                ('cv', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='contacts', to='main.cv')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "type",
+                    models.CharField(
+                        choices=[
+                            ("phone", "Phone number"),
+                            ("email", "Email address"),
+                            ("telegram", "Telegram"),
+                            ("linkedin", "LinkedIn"),
+                            ("github", "Github"),
+                            ("website", "Website"),
+                        ],
+                        max_length=63,
+                    ),
+                ),
+                ("value", models.CharField(max_length=127)),
+                (
+                    "cv",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="contacts",
+                        to="main.cv",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Project',
+            name="Project",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('description', models.TextField()),
-                ('cv', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='projects', to='main.cv')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("description", models.TextField()),
+                (
+                    "cv",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="projects",
+                        to="main.cv",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Skill',
+            name="Skill",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=63)),
-                ('level', models.CharField(choices=[('basic', 'Basic'), ('intermediate', 'Intermediate'), ('advanced', 'Advanced')], max_length=31)),
-                ('cv', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='skills', to='main.cv')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=63)),
+                (
+                    "level",
+                    models.CharField(
+                        choices=[
+                            ("basic", "Basic"),
+                            ("intermediate", "Intermediate"),
+                            ("advanced", "Advanced"),
+                        ],
+                        max_length=31,
+                    ),
+                ),
+                (
+                    "cv",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="skills",
+                        to="main.cv",
+                    ),
+                ),
             ],
         ),
     ]
