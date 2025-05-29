@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block title %}{{ cv.first_name }} {{ cv.last_name }} - CV{% endblock %}
 {% block content %}
-{% include "includes/cv_content.html" with show_download_button=True %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  {% include "includes/cv_content.html" with show_download_button=True %}
 {% endblock %}
