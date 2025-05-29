@@ -31,6 +31,9 @@ class Skill(models.Model):
     name = models.CharField(max_length=63)
     level = models.CharField(max_length=31, choices=LevelChoices.choices)
 
+    def __str__(self):
+        return self.name
+
 
 class Project(models.Model):
     cv = models.ForeignKey(CV, related_name="projects", on_delete=models.CASCADE)
