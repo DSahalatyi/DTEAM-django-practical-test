@@ -1,0 +1,43 @@
+  <div class="d-flex align-items-center">
+  <h2>{{ cv.first_name }} {{ cv.last_name }}</h2>
+  {% if show_download_button %}
+  <a href="{% url 'main:cv-download' cv.pk %}" class="btn btn-primary ml-3">Download PDF</a>
+  {% endif %}
+  </div>
+  <h4>{{ cv.bio }}</h4>
+  <br>
+  {% if cv.contacts.all %}
+    <div class="contacts-block">
+      {% for contact in cv.contacts.all %}
+        <strong>{{ contact.get_type_display }}</strong> : {{ contact.value }} {% if not forloop.last %}|
+      {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No contacts have been added</p>
+  {% endif %}
+  {% if cv.skills.all %}
+    <h4>Skills</h4>
+    <ul class="list-group">
+      {% for skill in cv.skills.all %}
+        <li class="list-group-item">
+          <strong>{{ skill.name }}</strong><span class="gray-text"> {{ skill.get_level_display }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No skills have been added</p>
+  {% endif %}
+  {% if cv.projects.all %}
+    <h4 class="projects-heading">Projects</h4>
+    <ul class="list-group">
+      {% for project in cv.projects.all %}
+        <li class="list-group-item project-description">
+          <strong>{{ project.name }}</strong>
+          <p>{{ project.description }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No projects have been added</p>
+  {% endif %}

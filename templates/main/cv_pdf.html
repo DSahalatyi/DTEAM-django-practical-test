@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ cv.first_name }} {{ cv.last_name }} - CV PDF</title>
+  <style>
+    body { font-family: sans-serif; }
+    .gray-text { color: #888; }
+  </style>
+</head>
+<body>
+  {% include "includes/cv_content.html" %}
+</body>
+</html>
