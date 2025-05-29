@@ -24,9 +24,9 @@ TESTING = "test" in sys.argv
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "")
-
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DJANGO_DEBUG") != "False"
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -146,6 +146,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",
+    "172.17.0.1",
     # ...
 ]
 
