@@ -1,0 +1,37 @@
+services:
+  web:
+    build: .
+    restart: always
+    container_name: cvproject
+    entrypoint: ./entrypoint.sh
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+    networks:
+      - cvproject_network
+
+  db:
+    image: postgres:17.0-alpine3.20
+    restart: always
+    container_name: cvproject-db
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - cvproject_network
+
+
+networks:
+  cvproject_network:
+    driver: bridge
+
+volumes:
+  postgres_data: {}

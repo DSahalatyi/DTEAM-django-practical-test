@@ -39,3 +39,10 @@ Apply migrations & populate DB with test data
 poetry run python manage.py migrate
 poetry run python manage.py loaddata initial_data.json
 ```
+
+### Run with Docker
+**Configure `.env` file according to `.env.example`**
+```shell
+docker-compose build
+docker-compose up
+```
