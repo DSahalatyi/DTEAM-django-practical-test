@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if requestlog_list %}
+    <h1>Latest 10 logs</h1>
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>HTTP Method</th>
+        <th>Path</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for log in requestlog_list %}
+        <tr>
+          <td>{{ log.timestamp }}</td>
+          <td>{{ log.http_method }}</td>
+          <td>{{ log.path }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>There are no CVs</p>
+  {% endif %}
+{% endblock %}
