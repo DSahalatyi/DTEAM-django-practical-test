@@ -1,9 +1,10 @@
 import io
 
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.views import generic
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 from xhtml2pdf import pisa
 
 from main.models import CV
@@ -33,3 +34,10 @@ class CVDownloadPDFView(View):
             )
             return response
         return HttpResponse("Error rendering PDF", status=500)
+
+
+class SettingsView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
+    template_name = "main/settings.html"
+
+    def test_func(self):
+        return self.request.user.is_superuser
