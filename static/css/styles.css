@@ -1,0 +1,33 @@
+body {
+    margin-top: 20px;
+}
+
+.gray-text {
+  color: #777;
+}
+
+.list-group {
+  padding-bottom: 2rem;
+}
+
+a.cv-link {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+a.cv-link:hover {
+  text-decoration: underline;
+}
+
+.cv-item {
+    border: 1px solid #000000;
+}
+
+.contacts-block {
+  margin-bottom: 1rem;
+}
+
+.project-description p {
+  margin-bottom: 0.25rem;
+}

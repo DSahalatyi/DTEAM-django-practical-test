@@ -33,3 +33,9 @@ pyenv local 3.12.8
 ```bash
 poetry install --no-root
 ```
+
+Apply migrations & populate DB with test data
+```bash
+poetry run python manage.py migrate
+poetry run python manage.py loaddata initial_data.json
+```
