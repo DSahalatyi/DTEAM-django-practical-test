@@ -34,6 +34,11 @@ SESSION_COOKIE_SECURE = True
 DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+CSRF_TRUSTED_ORIGINS = []
+for host in ALLOWED_HOSTS:
+    host = host.strip()
+    if host:
+        CSRF_TRUSTED_ORIGINS.append(f"https://{host}")
 
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
