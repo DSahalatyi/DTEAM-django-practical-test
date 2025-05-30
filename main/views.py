@@ -100,11 +100,16 @@ class CVDownloadPDFView(View):
         return HttpResponse("Error rendering PDF", status=500)
 
 
-class SettingsView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
+# Remove restrictions for testing/demonstration purposes
+class SettingsView(
+    # LoginRequiredMixin,
+    # UserPassesTestMixin,
+    TemplateView
+):
     template_name = "main/settings.html"
 
-    def test_func(self):
-        return self.request.user.is_superuser
+    # def test_func(self):
+    #     return self.request.user.is_superuser
 
 
 class CVSendEmailView(View):
