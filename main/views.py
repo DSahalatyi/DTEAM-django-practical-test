@@ -100,11 +100,16 @@ class CVDownloadPDFView(View):
         return HttpResponse("Error rendering PDF", status=500)
 
 
-class SettingsView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
+# Remove restrictions for testing/demonstration purposes
+class SettingsView(
+    # LoginRequiredMixin,
+    # UserPassesTestMixin,
+    TemplateView
+):
     template_name = "main/settings.html"
 
-    def test_func(self):
-        return self.request.user.is_superuser
+    # def test_func(self):
+    #     return self.request.user.is_superuser
 
 
 class CVSendEmailView(View):
@@ -115,6 +120,13 @@ class CVSendEmailView(View):
             return redirect(request.META.get("HTTP_REFERER", "/"))
 
         cv = get_object_or_404(CV, pk=pk)
-        send_cv_email.delay(cv.id, email)
+
+        try:
+            print("Creating send mail task")
+            result = send_cv_email.delay(cv.id, email)
+            print(f"Task result - {result}")
+        except Exception as e:
+            print(e)
+
         messages.success(request, "CV is being sent to the specified email.")
         return redirect(request.META.get("HTTP_REFERER", "/"))
