@@ -26,4 +26,5 @@ RUN python -m venv $VIRTUAL_ENV \
 
 COPY . .
 
-RUN chmod +x entrypoint.sh
+RUN python manage.py migrate
+RUN python manage.py collectstatic --noinput
