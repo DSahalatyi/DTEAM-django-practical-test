@@ -10,6 +10,7 @@ services:
       - "8000:8000"
     volumes:
       - ./:/app
+      - static_volume:/app/staticfiles
     depends_on:
       - db
     networks:
@@ -39,6 +40,7 @@ services:
   celery:
     build: .
     command: celery -A CVProject worker --loglevel=info
+    container_name: celery
     env_file:
       - .env
     volumes:
@@ -51,6 +53,20 @@ services:
     networks:
       - cvproject_network
 
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - static_volume:/app/static
+      - media_volume:/app/media
+    depends_on:
+      - web
+    networks:
+      - cvproject_network
 
 networks:
   cvproject_network:
@@ -58,3 +74,5 @@ networks:
 
 volumes:
   postgres_data: {}
+  static_volume:
+  media_volume:
