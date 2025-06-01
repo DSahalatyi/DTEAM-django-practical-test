@@ -120,13 +120,6 @@ class CVSendEmailView(View):
             return redirect(request.META.get("HTTP_REFERER", "/"))
 
         cv = get_object_or_404(CV, pk=pk)
-
-        try:
-            print("Creating send mail task")
-            result = send_cv_email.delay(cv.id, email)
-            print(f"Task result - {result}")
-        except Exception as e:
-            print(e)
-
+        send_cv_email.delay(cv.id, email)
         messages.success(request, "CV is being sent to the specified email.")
         return redirect(request.META.get("HTTP_REFERER", "/"))

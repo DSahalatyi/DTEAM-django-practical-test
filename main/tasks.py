@@ -8,7 +8,6 @@ from main.utilities import html_to_pdf
 
 @shared_task
 def send_cv_email(cv_id, recipient_email):
-    print("Task started")
     try:
         cv = CV.objects.prefetch_related("skills", "projects", "contacts").get(pk=cv_id)
         html = render_to_string("main/cv_pdf.html", {"cv": cv})
