@@ -40,7 +40,6 @@ services:
   celery:
     build: .
     command: celery -A CVProject worker --loglevel=info
-    container_name: celery
     env_file:
       - .env
     volumes:
